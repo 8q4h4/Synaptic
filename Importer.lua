@@ -102,6 +102,7 @@ return function(context, state, network)
 			
 			for i, v in pairs(getCodeBase) do
 				if v then
+					print(i, v)
 					shared.Modules[i] = shared.Modules.LuaState(v)()
 				end
 			end
