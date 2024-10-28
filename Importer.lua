@@ -93,6 +93,7 @@ return function(context, state, network)
 			shared.Modules.FiOne = state(getCodeBase.FiOne)()
 			shared.Modules.Yueliang = state(getCodeBase.Yueliang)()
 			
+			warn('VERSION 1')
 			print("Preparing Synaptic's Lua State...")
 			shared.Modules.LuaState = state(getCodeBase.LuaState)()
 			
@@ -102,7 +103,7 @@ return function(context, state, network)
 			
 			for i, v in pairs(getCodeBase) do
 				if v then
-					print(i, v)
+					print(i)
 					shared.Modules[i] = shared.Modules.LuaState(v)()
 				end
 			end
