@@ -1,55 +1,53 @@
-local network = require(game:GetService("ReplicatedStorage").Network)
-
 shared.Modules = {}
 
 local modules = {
 	{
 		Name = "language",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/language.lua",
 	},
 	{
 		Name = "Lexer",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/Lexer.lua",
 	},
 	{
 		Name = "FiOne",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/FiOne.lua",
 	},
 	{
 		Name = "Yueliang",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/Yueliang.lua",
 	},
 	{
 		Name = "LuaState",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/LuaState.lua",
 	},
 	{
 		Name = "Settings",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/Settings.lua",
 	},
 	{
 		Name = "HighLight",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/HighLight.lua",
 	},
 	{
 		Name = "Engine",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/Engine.lua",
 	},
 	{
 		Name = "UI",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/UI.lua",
 	},
 	{
 		Name = "Templates",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/Templates.lua",
 	},
 	{
 		Name = "lexer",
-		URL = "",
+		URL = "https://raw.githubusercontent.com/8q4h4/Synaptic/refs/heads/main/lexer.lua",
 	},
 }
 
-return function(context)
+return function(context, state, network)
 	warn([[-
 	===================================================================================
 	
@@ -71,7 +69,7 @@ return function(context)
 		end
 		
 		wait(math.random(10, 30) / 10)
-	else
+	elseif context.SynEnviroment == "LIVE" then
 		local getCodeBase = {}
 		
 		for i, v in pairs(modules) do
@@ -85,27 +83,9 @@ return function(context)
 			end
 		end
 		
-		warn("Synaptic codebase has been successfully downloaded. Preparing for execution...")
+		warn("Synaptic codebase has been successfully downloaded. Preparing for execution...", getCodeBase)
 		
 		-- LUA STATE
-		
-		local RS = game:GetService("ReplicatedStorage")	
-		local state = RS:WaitForChild("Modules"):WaitForChild("LuaState")
-
-		if state then
-			-- Clear enviroment for security reasons
-
-			for i, v in pairs(getfenv()) do
-				if v then
-					pcall(function()
-						getfenv()[i] = nil
-					end)
-				end
-			end
-
-			-- Start the state hook
-			state = require(state)
-		end
 		
 		if typeof(state) == "function" then
 			print("ALS has been hooked, found and required. Starting custom lua Virtual Machine...")
