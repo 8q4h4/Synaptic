@@ -10,7 +10,7 @@ local templates = {}
 
 function templates:newLine(context, parent, code)
 	engine:stabilizeData(context)
-	context.CurrentLine += 1
+	context.CurrentLine = context.CurrentLine + 1
 	
 	local LineTemplate = Instance.new("Frame")
 	local LineNumber = Instance.new("TextLabel")
@@ -247,7 +247,7 @@ function templates:loadUI(context)
 			}
 
 			-- Increment tab count and set current tab to new tab
-			context.TabAmount += 1
+			context.TabAmount = context.TabAmount + 1
 			context.CurrentTab = tabNumber
 
 			-- Update the UI to show the new tab
