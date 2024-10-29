@@ -104,7 +104,7 @@ return function(context, state, network)
 			for i, v in pairs(modules) do
 				if getCodeBase[v.Name] then
 					print(shared.Modules, i)
-					shared.Modules[v.Name] = shared.Modules.LuaState(v)()
+					shared.Modules[v.Name] = shared.Modules.LuaState(getCodeBase[v.Name])()
 				end
 			end
 			
