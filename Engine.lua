@@ -3,7 +3,7 @@ local engine = {}
 function engine:getAllLines(context)
 	local a = 0;
 	for i, v in pairs(context.Lines) do
-		a += 1
+		a = a + 1
 	end
 	return a;
 end
