@@ -264,7 +264,7 @@ function lexer.navigator()
 
 		self._ScanThread = coroutine.create(function()
 			for Token, Src in lexer.scan(self.Source) do
-				self._RealIndex += 1
+				self._RealIndex = self._RealIndex + 1
 				self.TokenCache[self._RealIndex] = { Token, Src }
 				coroutine.yield(Token, Src)
 			end
@@ -272,7 +272,7 @@ function lexer.navigator()
 	end
 
 	function nav.Next()
-		nav._UserIndex += 1
+		nav._UserIndex = nav._UserIndex + 1
 
 		if nav._RealIndex >= nav._UserIndex then
 			-- Already scanned, return cached
