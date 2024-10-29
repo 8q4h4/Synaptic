@@ -48,7 +48,7 @@ local COMMENT_MULTI_INCOMP = "%-%-%[=*%[.-.*" --Incompleted Multiline-Comment
 local COMMENT_PLAIN = "%-%-.-\n" --Completed Singleline-Comment
 local COMMENT_INCOMP = "%-%-.*" --Incompleted Singleline-Comment
 -- local TYPED_VAR = ":%s*([%w%?%| \t]+%s*)" --Typed variable, parameter, function
-
+warn("teds", shared.Modules)
 local lang = shared.Modules.language
 local lua_keyword = lang.keyword
 local lua_builtin = lang.builtin
